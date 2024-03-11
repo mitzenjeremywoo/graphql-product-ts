@@ -1,34 +1,27 @@
-import path from "path";
-import { Configuration } from "webpack";
+const path = require('path');
+var nodeExternals = require('webpack-node-externals');
 
-const config: Configuration = {
-  entry: "./src/index.ts",
+module.exports = {
+  entry: './src/index.ts',
+  target: 'node', // use require() & use NodeJs CommonJS style
+  externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
+  externalsPresets: {
+      node: true // in order to ignore built-in modules like path, fs, etc. 
+  },
   module: {
     rules: [
       {
-        test: /\.(ts|js)?$/,
+        test: /\.tsx?$/,
+        use: 'ts-loader',
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env", "@babel/preset-typescript"],
-          },
-        },
       },
     ],
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
-  },
-  devServer: {
-    static: path.join(__dirname, "dist"),
-    compress: true,
-    port: 4000,
+    filename: 'index.js',
+    path: path.resolve(__dirname, 'dist'),
   },
 };
-
-export default config;

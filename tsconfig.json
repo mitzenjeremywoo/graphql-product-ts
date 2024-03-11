@@ -1,19 +1,13 @@
 {
-    "compilerOptions": {
-      // "outDir": "./dist/",
-      // "noImplicitAny": true,
-      // "module": "ESNext",
-      // "target": "ES6",
-      // "jsx": "react",
-      // "allowJs": true,
-      // "moduleResolution": "node",
-      // "allowSyntheticDefaultImports": true,
-      // "esModuleInterop" : true,
-      "outDir": "dist",
-      "target": "ES6",
-      "strict": true,
-      "noEmit": true,
-      "esModuleInterop": true
+    "compilerOptions": {  
+      "outDir": "./dist/",
+      "noImplicitAny": true,
+      "target": "ESNext",
+      "module": "ESNext",
+      "esModuleInterop": true,
+      "moduleResolution": "node",
+      "allowJs": true,
+      "allowSyntheticDefaultImports": true,
     },
     "exclude": ["node_modules"],
     "include": ["src/**/*"],
